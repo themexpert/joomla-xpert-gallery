@@ -93,13 +93,13 @@
                     <option value="hover">HOVER_IMAGE</option>
                 </field>
 
-                <field name="overview_hover_style" type="list" default=""
+                <field name="overview_hover_style" type="list" default="flip"
                        label="OVERVIEW_HOVER_STYLE_LABEL"
                        description="OVERVIEW_HOVER_STYLE_DESC">
-                    <option value="1">Style 1</option>
-                    <option value="2">Style 2</option>
-                    <option value="3">Style 3</option>
-                    <option value="4">Style 4</option>
+                    <option value="swing">Swing</option>
+                    <option value="flip">Flip</option>
+                    <option value="zoom-in">Zoom in</option>
+                    <option value="zoom-out">Zoom out</option>
                     <!--<option value="5">Style 5</option>-->
                 </field>
 

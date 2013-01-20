@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted accessd');
 ?>
 
 <!--ThemeXpert: Xpert Gallery module ##VERSION## Start here-->
-<div class="tx-gallery <?php echo $module_id;?> <?php echo $params->get('moduleclass_sfx');?> overview-<?php echo $params->get('overview_position');?> clearfix">
+<div class="tx-gallery <?php echo $module_id;?> overview-<?php echo $params->get('overview_position');?> clearfix">
 
     <?php if($params->get('sort_enabled', 1)): ?>
     <ul class="tx-gallery-sort clearfix" data-option-key="sortBy">
@@ -35,7 +35,7 @@ defined('_JEXEC') or die('Restricted accessd');
     </ul>
     <?php endif;?>
 
-    <ul class="tx-gallery-container tx-gallery-columns-<?php echo $params->get('column',3);?> style-<?php echo $params->get('overview_hover_style');?>"><?php foreach($items as $item) : ?><li>
+    <ul class="tx-gallery-container tx-gallery-columns-<?php echo $params->get('column',3);?> <?php echo $params->get('overview_hover_style');?>"><?php foreach($items as $item) : ?><li>
 
         <div class="tx-gallery-item">
             <div class="tx-gallery-item-in">

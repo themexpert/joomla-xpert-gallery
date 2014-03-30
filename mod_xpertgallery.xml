@@ -29,14 +29,14 @@
 
     <config>
         <fields name="params" addfieldpath="libraries/xef/fields">
-            <fieldset name="GENERAL_SETTINGS">
+            <fieldset name="basic">
 
                 <field name="utility" type="utility" />
 
                 <field name="generaldoc" type="doc" message="DOC_MSG" />
 
                 <field name="content_source" type="source" default="joomla"
-                       providers='joomla,k2,flickr'
+                       providers='joomla,k2'
                        label="CONTENT_SOURCE"
                        description="CONTENT_SOURCE_DESC" />
 
@@ -67,7 +67,7 @@
                            label="SORT_ELEMENTS_LABEL"
                            description="SORT_ELEMENTS_DESC"
                            class="chzn-select">
-                       <option value="default">DEFAULT</option>
+                       <option value="original-order">ORIGINAL_ORDER</option>
                        <option value="title">TITLE</option>
                        <option value="date">DATE</option>
                        <option value="random">RANDOM</option>
@@ -83,24 +83,6 @@
                        class="btn-group" filter="integer">
                     <option value="1">JSHOW</option>
                     <option value="0">JHIDE</option>
-                </field>
-
-                <field name="overview_position" type="radio" default="hover"
-                       label="OVERVIEW_POSITION"
-                       description="OVERVIEW_POSITION_DESC"
-                       class="btn-group" filter="string">
-                    <option value="below">BELOW_IMAGE</option>
-                    <option value="hover">HOVER_IMAGE</option>
-                </field>
-
-                <field name="overview_hover_style" type="list" default="flip"
-                       label="OVERVIEW_HOVER_STYLE_LABEL"
-                       description="OVERVIEW_HOVER_STYLE_DESC">
-                    <option value="swing">Swing</option>
-                    <option value="flip">Flip</option>
-                    <option value="zoom-in">Zoom in</option>
-                    <option value="zoom-out">Zoom out</option>
-                    <!--<option value="5">Style 5</option>-->
                 </field>
 
                 <field name="overview_elements" type="list" default="title,intro" multiple="true"
@@ -157,7 +139,7 @@
 
             <fieldset name="JOOMLA">
 
-                <field name="jomcatfilter" type="radio" default="0"
+                <field name="jomcatfilter" type="hidden" default="1"
                        class="btn-group"
                        filter="integer"
                        label="JOOM_CATEGOTY_FILTER_LABEL"
@@ -199,7 +181,7 @@
 
             <fieldset name="K2">
 
-                <field name="k2_catfilter" type="radio" default="0"
+                <field name="k2_catfilter" type="radio" default="1"
                        class="btn-group"
                        filter="integer"
                        label="K2_CATEGORY_FILTER"
@@ -261,7 +243,7 @@
 
             </fieldset>
 
-            <fieldset name="FLICKR_SETTINGS">
+            <!-- <fieldset name="FLICKR_SETTINGS">
                 <field name="flickr_search_from" type="list" default="user" label="FLICKR_SEARCH_FROM_LABEL" description="FLICKR_SEARCH_FROM_DESC">
                     <option value="user">User photos</option>
                     <option value="tags">Photos by tags</option>
@@ -271,7 +253,7 @@
                 <field name="flickr_user_name" type="text" default="Parvez Akther" label="FLICKR_USER_NAME_LABEL" description="FLICKR_USER_NAME_DESC" />
                 <field name="flickr_attrs" type="text" default="nature" label="FLICKR_ATTRS_LABEL" description="FLICKR_ATTRS_DESC" />
             </fieldset>
-
+ -->
             <fieldset name="advanced">
                 <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
                 <field name="moduleclass_sfx" type="text" default="" label="MODULECLASS_SFX" description="MODULECLASS_SFX_DESC" />
@@ -298,15 +280,18 @@
                     <option value="local">From Module Core</option>
                     <option value="google_cdn">From Google CDN</option>
                 </field>
-                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+                <field name="cache" type="list" default="1"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC">
                     <option value="1">JGLOBAL_USE_GLOBAL</option>
                     <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-                </field>
-
-                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
-                <field name="cachemode" type="hidden" default="static">
-                    <option value="static"></option>
-                </field>
+                  </field>
+                  <field name="cache_time" type="text" default="900"
+                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                    description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+                  <field name="cachemode" type="hidden" default="itemid">
+                    <option value="itemid"></option>
+                  </field>
             </fieldset>
 
             <fieldset name="DOCUMENTATION_SUPPORT">

@@ -7,69 +7,35 @@
  *
  */
 
-jQuery(document).ready(function()
-{
-
-    // Get the height of the content area if overview-hover selected
-    if(jQuery('.overview-hover').length > 0)
-    {
-        var c = 0,
-            a = jQuery('.tx-gallery-item'),
-            b = jQuery('.tx-gallery-item-in');
-
-        b.each(function () {
-            c = Math.max(c, jQuery(this).outerHeight());
-        });
-
-        a.css("min-height", c + "px");
-        b.css("min-height", c + "px");
-        jQuery('.tx-gallery-info, .tx-gallery-image').css("min-height", c + "px");
-    }
-    
-    // Get the container node
-    var $container = jQuery('.tx-gallery-container');
-
-    // Initialize Isotop
-    $container.isotope({
-        // options
-        itemSelector : 'li',
-        layoutMode : 'fitRows',
-        getSortData : {
-          date : function( $elem ) {
-              return $elem.find('.tx-gallery-date').text();
-          },
-          title : function ( $elem ) {
-            return $elem.find('.tx-gallery-title').text();
-          }
-        }
+jQuery(window).load(function() {
+    // init Isotope
+    var container = jQuery('.tx-gallery-container').isotope({
+        itemSelector: '.tx-gallery-container li',
+        layoutMode: 'fitRows'
     });
 
-    var $optionSet = jQuery('.tx-gallery-sort'),
-      $optionLink = $optionSet.find('a');
+    // bind filter button click
+    jQuery('.tx-gallery-filters').on( 'click', 'li', function() {
+        var filterValue = jQuery( this ).attr('data-filter');
+        container.isotope({ filter: filterValue });
+        // Assign active class
+        jQuery(this).siblings().removeClass('active');
+        jQuery(this).addClass('active');
+    });
 
-  $optionLink.click(function(){
+     // bind sort button click
+    jQuery('.tx-gallery-sort').on( 'click', 'li', function() {
+        var sortValue = jQuery(this).attr('data-sort');
+        container.isotope({ sortBy: sortValue });
+        // Assign active class
+        jQuery(this).siblings().removeClass('active');
+        jQuery(this).addClass('active');
+    });
 
-    var $this = jQuery(this);
-
-    // don't proceed if already selected
-    if ( $this.hasClass('selected') ) {
-      return false;
-    }
-
-    $optionSet.find('.selected').removeClass('selected');
-    $this.addClass('selected');
-
-    // make option object dynamically, i.e. { filter: '.my-filter-class' }
-    var options = {},
-        key = $optionSet.attr('data-option-key'),
-        value = $this.attr('data-option-value');
-    // parse 'false' as false boolean
-    value = value === 'false' ? false : value;
-    options[ key ] = value;
-
-    // apply new options
-    $container.isotope( options );
-
-    return false;
-  });
+    //Magnific popup options
+     jQuery('.tx-gallery-image a, .tx-gallery-image-preview').magnificPopup({type:'image'});
+     jQuery('.tx-gallery-image-link').magnificPopup({ 
+        type: 'ajax',
+        overflowY: 'scroll'
+    });
 });

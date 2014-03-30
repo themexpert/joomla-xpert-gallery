@@ -18,9 +18,20 @@ abstract class XEFXpertGalleryHelper{
         if( !defined('XPERT_GALLERY') )
         {
             $doc = JFactory::getDocument();
+            $js_path = JURI::root(true).'/modules/mod_xpertgallery/assets/js';
+            $css_path = JURI::root(true).'/modules/mod_xpertgallery/assets/css';
 
-            $doc->addScript(JURI::root(true).'/modules/mod_xpertgallery/assets/js/jquery.isotope.min.js');
-            $doc->addScript(JURI::root(true).'/modules/mod_xpertgallery/assets/js/script.js');
+            $doc->addScript($js_path . '/jquery.isotope.min.js');
+
+            if( !defined('XPERT_POPUP') )
+            {
+                $doc->addScript($js_path . '/magnific.min.js');
+                $doc->addStyleSheet($css_path . '/magnific.css');
+                define('XPERT_POPUP',1);
+            }
+
+            // Load module script last
+            $doc->addScript($js_path . '/script.min.js');
 
             define('XPERT_GALLERY',1);
         }

@@ -35,8 +35,35 @@ $class_name = importSource($content_source);
 // Create instance of the class
 $instance = new $class_name($module, $params);
 
-// Get the items
-$items = $instance->getItems();
+// Lets set some variables
+$cat_ids = array();
+$cat_field = '';
+$items = array();
+// assign ids based on contetn_source
+switch ( $content_source ) {
+	case 'joomla':
+		$cat_ids = $params->get('jom_catid');
+		$cat_field = 'jom_catid';
+		break;
+	case 'k2':
+		$cat_ids = $params->get('k2_catid');
+		$cat_field = 'k2_catid';
+		break;
+	case 'easyblog':
+		$cat_ids = $params->get('eb_catid');
+		$cat_field = 'eb_catid';
+		break;
+	default:
+		$cat_ids = $params->get('jom_catid');
+		$cat_field = 'eb_catid';
+		break;
+}
+// Populate items
+foreach ($cat_ids as $id) {
+	$instance->set($cat_field, array($id));
+	$items[] = $instance->getItems();
+}
+
 
 // Load Stylesheet file
 XEFUtility::loadStyleSheet($module, $params);

@@ -181,7 +181,7 @@
 
             <fieldset name="K2">
 
-                <field name="k2_catfilter" type="radio" default="1"
+                <field name="k2_catfilter" type="hidden" default="1"
                        class="btn-group"
                        filter="integer"
                        label="K2_CATEGORY_FILTER"

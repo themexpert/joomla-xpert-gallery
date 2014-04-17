@@ -11,7 +11,48 @@
 // no direct access
 defined('_JEXEC') or die;
 
-abstract class XEFXpertGalleryHelper{
+abstract class XEFXpertGalleryHelper
+{
+
+    public static function getCatFilterList($items, $params)
+    {
+        $html = '';
+
+        // Set the var name based on content source
+        switch ( $params->get('content_source', 'joomla') ) {
+            case 'k2':
+                $cat_alias = 'categoryalias';
+                $cat_name = 'categoryname';
+                break;
+            // Default Joomla
+            default:
+                $cat_alias = 'category_route';
+                $cat_name = 'category_title';
+                break;
+        }
+
+        foreach( $items as $item )
+        {
+            $html .= '<li data-filter=".'. $item[0]->$cat_alias .'">' . $item[0]->$cat_name . '</li>' . "\n";
+        }
+
+        return $html ;
+    }
+
+    public function getCatNameAsClass( $item, $params )
+    {
+        switch ( $params->get('content_source', 'joomla') )
+        {
+            case 'k2':
+                $class = $item->categoryalias;
+                break;
+            
+            default:
+                $class = $item->category_route;
+                break;
+        }
+        return $class;
+    }
 
     public static function loadScript($module, $params)
     {

@@ -44,10 +44,14 @@ switch ( $content_source ) {
 	case 'joomla':
 		$cat_ids = $params->get('jom_catid');
 		$cat_field = 'jom_catid';
+		// Set cat filter alwasy 1
+		$instance->set( 'jomcatfilter', 1 );
 		break;
 	case 'k2':
 		$cat_ids = $params->get('k2_catid');
 		$cat_field = 'k2_catid';
+		// Set cat_filter alwasy 1
+		$instance->set( 'k2_catfilter', 1 );
 		break;
 	case 'easyblog':
 		$cat_ids = $params->get('eb_catid');
@@ -60,10 +64,10 @@ switch ( $content_source ) {
 }
 // Populate items
 foreach ($cat_ids as $id) {
-	$instance->set($cat_field, array($id));
+	// Set cat id
+	$instance->set( $cat_field, array($id) );
 	$items[] = $instance->getItems();
 }
-
 
 // Load Stylesheet file
 XEFUtility::loadStyleSheet($module, $params);

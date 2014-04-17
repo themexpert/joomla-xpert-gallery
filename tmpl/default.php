@@ -19,9 +19,7 @@ defined('_JEXEC') or die('Restricted accessd');
     <div class="tx-gallery-header">
         <ul class="tx-gallery-filters">
             <li data-filter="*" class="active"><?php echo JText::_('ALL')?></li>
-            <?php foreach($items as $item):?>
-                <li data-filter=".<?php echo $item[0]->category_route?>"><?php echo $item[0]->category_title; ?></li>
-            <?php endforeach; ?>
+            <?php echo XEFXpertGalleryHelper::getCatFilterList( $items, $params ) ; ?>
         </ul>
 
         <?php if($params->get('sort_enabled', 1)): ?>
@@ -39,7 +37,7 @@ defined('_JEXEC') or die('Restricted accessd');
     <ul class="tx-gallery-container tx-gallery-columns-<?php echo $params->get('column',3);?>">
         <?php foreach($items as $item):?>
             <?php foreach($item as $i):?>
-                <li class="<?php echo $i->category_route; ?>">
+                <li class="<?php echo XEFXpertGalleryHelper::getCatNameAsClass( $i, $params ) ; ?>">
                     <div class="tx-gallery-item">
                         <div class="tx-gallery-item-in">
 

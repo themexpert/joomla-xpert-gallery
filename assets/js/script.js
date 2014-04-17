@@ -11,7 +11,11 @@ jQuery(window).load(function() {
     // init Isotope
     var container = jQuery('.tx-gallery-container').isotope({
         itemSelector: '.tx-gallery-container li',
-        layoutMode: 'fitRows'
+        layoutMode: 'fitRows',
+        getSortData: {
+          title: '.tx-gallery-title',
+          date: '.tx-gallery-date'
+        }
     });
 
     // bind filter button click
@@ -34,8 +38,10 @@ jQuery(window).load(function() {
 
     //Magnific popup options
      jQuery('.tx-gallery-image a, .tx-gallery-image-preview').magnificPopup({type:'image'});
-     jQuery('.tx-gallery-image-link').magnificPopup({ 
+     jQuery('.tx-gallery-image-link').magnificPopup({
         type: 'ajax',
-        overflowY: 'scroll'
+        alignTop: true,
+        overflowY: 'scroll',
+        closeOnBgClick : false
     });
 });

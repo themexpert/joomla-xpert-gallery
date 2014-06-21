@@ -33,7 +33,7 @@ abstract class XEFXpertGalleryHelper
 
         foreach( $items as $item )
         {
-            $html .= '<li data-filter=".'. $item[0]->$cat_alias .'">' . $item[0]->$cat_name . '</li>' . "\n";
+            $html .= '<li data-filter=".'. str_replace('/', '-', $item[0]->$cat_alias) .'">' . $item[0]->$cat_name . '</li>' . "\n";
         }
 
         return $html ;
@@ -48,7 +48,7 @@ abstract class XEFXpertGalleryHelper
                 break;
             
             default:
-                $class = $item->category_route;
+                $class = str_replace('/', '-', $item->category_route);
                 break;
         }
         return $class;

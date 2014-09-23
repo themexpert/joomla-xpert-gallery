@@ -15,12 +15,19 @@ defined('_JEXEC') or die('Restricted accessd');
 
 <!--ThemeXpert: Xpert Gallery module ##VERSION## Start here-->
 <div class="tx-gallery <?php echo $module_id;?> overview-<?php echo $params->get('overview_position');?> clearfix">
-    
+
+    <?php if( $params->get('sort_enabled') OR $params->get('cat_sort_enabled') ): ?>
     <div class="tx-gallery-header">
+
+        <?php if($params->get('cat_sort_enabled')): ?>
         <ul class="tx-gallery-filters">
-            <li data-filter="*" class="active"><?php echo JText::_('ALL')?></li>
+            <?php if( $params->get('show_all') ): ?>
+                <li data-filter="*" class="active"><?php echo JText::_('ALL')?></li>
+            <?php endif; ?>
+
             <?php echo XEFXpertGalleryHelper::getCatFilterList( $items, $params ) ; ?>
         </ul>
+        <?php endif; ?>
 
         <?php if($params->get('sort_enabled', 1)): ?>
         <ul class="tx-gallery-sort" >
@@ -33,6 +40,7 @@ defined('_JEXEC') or die('Restricted accessd');
         </ul>
         <?php endif;?>
     </div>
+    <?php endif; ?>
 
     <ul class="tx-gallery-container tx-gallery-columns-<?php echo $params->get('column',3);?>">
         <?php foreach($items as $item):?>

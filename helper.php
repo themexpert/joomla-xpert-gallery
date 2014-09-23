@@ -30,16 +30,23 @@ abstract class XEFXpertGalleryHelper
                 $cat_name = 'category_title';
                 break;
         }
-
+        $i = 1;
         foreach( $items as $item )
         {
-            $html .= '<li data-filter=".'. str_replace('/', '-', $item[0]->$cat_alias) .'">' . $item[0]->$cat_name . '</li>' . "\n";
+            if( !$params->get('show_all') AND ($i == 1) )
+            {
+                $class = 'class="active"';
+            }else{
+                $class = '';
+            }
+            $html .= '<li data-filter=".'. str_replace('/', '-', $item[0]->$cat_alias) .'"'. $class .'>' . $item[0]->$cat_name . '</li>' . "\n";
+            $i++;
         }
 
         return $html ;
     }
 
-    public function getCatNameAsClass( $item, $params )
+    public static function getCatNameAsClass( $item, $params )
     {
         switch ( $params->get('content_source', 'joomla') )
         {
@@ -62,7 +69,10 @@ abstract class XEFXpertGalleryHelper
             $js_path = JURI::root(true).'/modules/mod_xpertgallery/assets/js';
             $css_path = JURI::root(true).'/modules/mod_xpertgallery/assets/css';
 
-            $doc->addScript($js_path . '/jquery.isotope.min.js');
+            if( $params->get('sort_enabled') OR $params->get('cat_sort_enabled') )
+            {
+                $doc->addScript($js_path . '/jquery.isotope.min.js');
+            }
 
             if( !defined('XPERT_POPUP') )
             {

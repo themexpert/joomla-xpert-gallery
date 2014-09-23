@@ -73,6 +73,22 @@
                        <option value="random">RANDOM</option>
                    </field>
 
+                    <field name="cat_sort_enabled" type="radio" default="1"
+                            label="CAT_SORT_ENABLED_LABEL"
+                            description="CAT_SORT_ENABLED_DESC"
+                            class="btn-group" filter="integer">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                    </field>
+
+                <field name="show_all" type="radio" default="1"
+                        label="SHOW_ALL_LABEL"
+                        description="SHOW_ALL_DESC"
+                        class="btn-group" filter="integer">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
                 <field name="display_settings" type="spacer"
                    label="DISPLAY_SETTINGS_LABEL"
                    description="DISPLAY_SETTINGS_DESC" />

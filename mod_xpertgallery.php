@@ -39,7 +39,7 @@ $instance = new $class_name($module, $params);
 $cat_ids = array();
 $cat_field = '';
 $items = array();
-// assign ids based on contetn_source
+// assign ids based on content source
 switch ( $content_source ) {
 	case 'joomla':
 		$cat_ids = $params->get('jom_catid');
@@ -57,17 +57,26 @@ switch ( $content_source ) {
 		$cat_ids = $params->get('eb_catid');
 		$cat_field = 'eb_catid';
 		break;
+    case 'flickr':
+        $cat_ids = '';
+        $cat_field = '';
 	default:
 		$cat_ids = $params->get('jom_catid');
 		$cat_field = 'eb_catid';
 		break;
 }
 // Populate items
-foreach ($cat_ids as $id) {
-	// Set cat id
-	$instance->set( $cat_field, array($id) );
-	$items[] = $instance->getItems();
+if( $content_source == 'flickr')
+{
+    $items = $instance->getItems();
+}else{
+    foreach ($cat_ids as $id) {
+    	// Set cat id
+    	$instance->set( $cat_field, array($id) );
+    	$items[] = $instance->getItems();
+    }
 }
+
 
 // Load Stylesheet file
 XEFUtility::loadStyleSheet($module, $params);

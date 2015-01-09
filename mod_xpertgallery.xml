@@ -36,7 +36,7 @@
                 <field name="generaldoc" type="doc" message="DOC_MSG" />
 
                 <field name="content_source" type="source" default="joomla"
-                       providers='joomla,k2'
+                       providers='joomla,k2,flickr'
                        label="CONTENT_SOURCE"
                        description="CONTENT_SOURCE_DESC" />
 
@@ -259,17 +259,13 @@
 
             </fieldset>
 
-            <!-- <fieldset name="FLICKR_SETTINGS">
-                <field name="flickr_search_from" type="list" default="user" label="FLICKR_SEARCH_FROM_LABEL" description="FLICKR_SEARCH_FROM_DESC">
-                    <option value="user">User photos</option>
-                    <option value="tags">Photos by tags</option>
-                    <option value="text">Photos by text search</option>
-                    <option value="recent">Recent uploaded photos</option>
-                </field>
+            <fieldset name="FLICKR_SETTINGS">
+                <field name="api_key" type="text" label="API Key" description="Enter Flickr API key" />
+
                 <field name="flickr_user_name" type="text" default="Parvez Akther" label="FLICKR_USER_NAME_LABEL" description="FLICKR_USER_NAME_DESC" />
-                <field name="flickr_attrs" type="text" default="nature" label="FLICKR_ATTRS_LABEL" description="FLICKR_ATTRS_DESC" />
+
             </fieldset>
- -->
+
             <fieldset name="advanced">
                 <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
                 <field name="moduleclass_sfx" type="text" default="" label="MODULECLASS_SFX" description="MODULECLASS_SFX_DESC" />

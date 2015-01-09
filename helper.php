@@ -69,7 +69,9 @@ abstract class XEFXpertGalleryHelper
             $js_path = JURI::root(true).'/modules/mod_xpertgallery/assets/js';
             $css_path = JURI::root(true).'/modules/mod_xpertgallery/assets/css';
 
-            if( $params->get('sort_enabled') OR $params->get('cat_sort_enabled') )
+            if( $params->get('sort_enabled') OR
+                $params->get('cat_sort_enabled') AND
+                ($params->get('content_source') !== 'flickr') )
             {
                 $doc->addScript($js_path . '/jquery.isotope.min.js');
             }

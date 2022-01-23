@@ -18,12 +18,17 @@ abstract class XEFXpertGalleryHelper
     {
         $html = '';
 
+        // echo "<pre>";
+        // var_dump($items); die;
+        // echo "</pre>";
+
         // Set the var name based on content source
         switch ( $params->get('content_source', 'joomla') ) {
             case 'k2':
                 $cat_alias = 'categoryalias';
                 $cat_name = 'categoryname';
                 break;
+
             // Default Joomla
             default:
                 $cat_alias = 'category_route';
@@ -31,14 +36,22 @@ abstract class XEFXpertGalleryHelper
                 break;
         }
         $i = 1;
+
+        
+
         foreach( $items as $item )
         {
+        //     echo "<pre>";
+        // var_dump($item[0]->$cat_name); 
+        // echo "</pre>";
+
             if( !$params->get('show_all') AND ($i == 1) )
             {
                 $class = 'class="active"';
             }else{
                 $class = '';
             }
+            
             $html .= '<li data-filter=".'. str_replace('/', '-', $item[0]->$cat_alias) .'"'. $class .'>' . $item[0]->$cat_name . '</li>' . "\n";
             $i++;
         }

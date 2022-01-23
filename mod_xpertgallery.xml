@@ -21,6 +21,7 @@
         <filename>helper.php</filename>
         <filename>index.html</filename>
         <filename>mod_xpertgallery.xml</filename>
+        <filename>en-GB.mod_xpertgallery.ini</filename>
     </files>
     
     <languages folder="language">
@@ -196,7 +197,6 @@
             </fieldset>
 
             <fieldset name="K2">
-
                 <field name="k2_catfilter" type="hidden" default="1"
                        class="btn-group"
                        filter="integer"
